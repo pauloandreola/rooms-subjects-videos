@@ -13,7 +13,7 @@ export class SubjectController {
     try {
       const newSubject = SubjectRepository.create({ name });
 
-      await SubjectRepository.save(newSubject)
+      await SubjectRepository.save(newSubject);
 
       return res.status(201).json(newSubject);
 
