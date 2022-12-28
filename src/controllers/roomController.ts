@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+
 import { RoomRepository } from "../repositories/roomRepository";
+import { SubjectRepository } from "../repositories/subjectRepository";
 import { VideoRepository } from "../repositories/videoRepository";
 
 
@@ -57,4 +59,52 @@ export class RoomController {
       return res.status(500).json({ message: 'Internal server error'});
     }
   }
+
+  async roomSubject (req: Request,  res: Response) {
+    const { subject_id } = req.body;
+    const { idRoom } = req.params;
+
+    try {
+      const room = await RoomRepository.findOneBy({ id: Number(idRoom)});
+
+      if (!room) {
+        return res.status(404).json({ message: 'Room not found, or not exists'})
+      }
+
+      const subject = await SubjectRepository.findOneBy({ id: Number(subject_id)});
+
+      if (!subject) {
+        return res.status(404).json({ message: 'Subject not found, or not exists'})
+      }
+
+      const roomUpdate = { ...room, subjects: [subject]}
+
+      await RoomRepository.save(roomUpdate);
+
+      return res.status(204).send();
+
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Internal server error'});      
+    }
+  };
+
+  async list(req: Request, res: Response) {
+
+    try {
+      const rooms = await RoomRepository.find({
+        relations: {
+          subjects: true,
+          videos: true,
+        },
+      });
+
+      return res.json(rooms);
+      
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Internal server error'});
+    }
+
+  };
 }
