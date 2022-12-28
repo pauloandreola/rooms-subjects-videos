@@ -1,4 +1,5 @@
 import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+
 import { Subject } from "./subject";
 import { Video } from "./video";
 
