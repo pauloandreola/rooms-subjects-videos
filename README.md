@@ -1,5 +1,7 @@
 # rooms-subjects-videos
 
+Link do projeto: https://youtu.be/j8cm2C5-xn8
+
 - Criar repositório no Github
 - Clonar para o VS Code
 - Abrir o terminal no VS Code com CTRL + J
@@ -9,5 +11,6 @@
 - Configurar dentro do package.json logo abaixo do "license": "MIT" o "scripts": { "dev": "nodemon --exec ts-node ./src/index.ts" }
 - Próximo passo é instalar o Typescript que pode ser instalado pleo npx tsc --init no terminal, neste caso será gerado um tsconfig com bastante configurações desabilitadas dentro do compilerOption. OBS - O ideal é instalar o tsc localmente para se ajustar a cada projeto e não globalmente, pois normalmente os projetos diferem uns dos outros.
 - Com postgres já instalado no computador criar um database com nome de "api_rest_typescript"
-- Após criar o método get dentro do index, testar com Insomnia ou Postgres o método, que deve retornar um json
+- Após criar o método get dentro do index, testar com Insomnia ou Postgres o método, que deve retornar um json... após isso seguindo o vídeo.
+
 
